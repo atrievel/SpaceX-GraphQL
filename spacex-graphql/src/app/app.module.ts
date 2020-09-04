@@ -8,6 +8,8 @@ import { ViewSelectorComponent } from './view-selector/view-selector.component';
 import { ShipsListComponent } from './ships-list/ships-list.component';
 import { ShipDetailsComponent } from './ship-details/ship-details.component';
 import { LaunchDetailsComponent } from './launch-details/launch-details.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LaunchDetailsComponent } from './launch-details/launch-details.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GraphQLModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
