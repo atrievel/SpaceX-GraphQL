@@ -1,0 +1,16 @@
+query allLaunchesList($offset: Int!, $limit: Int!) {
+  launches(offset: $offset, limit: $limit) {
+    id
+    mission_name
+    launch_date_utc
+    launch_site {
+      site_name_long
+    }
+    links {
+      flickr_images
+    }
+    rocket {
+      rocket_name
+    }
+  }
+}
