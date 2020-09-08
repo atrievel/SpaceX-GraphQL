@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ViewSelectorComponent } from './view-selector/view-selector.component';
-import { LaunchesListComponent } from './launches-list/launches-list.component';
-import { ShipsListComponent } from './ships-list/ships-list.component';
+import { PastLaunchListComponent } from './past-launch-list/past-launch-list.component';
+import { FutureLaunchListComponent } from './future-launch-list/future-launch-list.component';
+import { LaunchDetailsComponent } from './launch-details/launch-details.component';
 
 
 const routes: Routes = [
@@ -11,16 +12,16 @@ const routes: Routes = [
     component: ViewSelectorComponent
   },
   {
-    path: 'launches',
-    component: LaunchesListComponent
+    path: 'launches/past',
+    component: PastLaunchListComponent
   },
   {
-    path: 'ships',
-    component: ShipsListComponent
+    path: 'launches/future',
+    component: FutureLaunchListComponent
   },
   {
-    path: 'ships/:id',
-    component: ShipsListComponent
+    path: 'launches/:id',
+    component: LaunchDetailsComponent
   }
 ];
 
