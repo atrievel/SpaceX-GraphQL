@@ -1,0 +1,13 @@
+.photo-grid {
+  padding-top: 30px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+}
+
+mat-card {
+  width: 50%;
+  margin: auto;
+  margin-top: 2%;
+}
