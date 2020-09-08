@@ -1323,6 +1323,27 @@ export type CoreMission = {
   flight?: Maybe<Scalars['Int']>;
 };
 
+export type FutureLaunchListQueryVariables = Exact<{
+  offset: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type FutureLaunchListQuery = (
+  { __typename?: 'Query' }
+  & { launchesUpcoming?: Maybe<Array<Maybe<(
+    { __typename?: 'Launch' }
+    & Pick<Launch, 'id' | 'launch_date_utc' | 'mission_name'>
+    & { rocket?: Maybe<(
+      { __typename?: 'LaunchRocket' }
+      & Pick<LaunchRocket, 'rocket_name'>
+    )>, launch_site?: Maybe<(
+      { __typename?: 'LaunchSite' }
+      & Pick<LaunchSite, 'site_name_long'>
+    )> }
+  )>>> }
+);
+
 export type LaunchDetailsQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -1340,23 +1361,23 @@ export type LaunchDetailsQuery = (
   )> }
 );
 
-export type AllLaunchesListQueryVariables = Exact<{
+export type PastLaunchListQueryVariables = Exact<{
   offset: Scalars['Int'];
   limit: Scalars['Int'];
 }>;
 
 
-export type AllLaunchesListQuery = (
+export type PastLaunchListQuery = (
   { __typename?: 'Query' }
-  & { launches?: Maybe<Array<Maybe<(
+  & { launchesPast?: Maybe<Array<Maybe<(
     { __typename?: 'Launch' }
-    & Pick<Launch, 'id' | 'mission_name' | 'launch_date_utc'>
+    & Pick<Launch, 'mission_name' | 'id' | 'launch_date_utc'>
     & { launch_site?: Maybe<(
       { __typename?: 'LaunchSite' }
       & Pick<LaunchSite, 'site_name_long'>
     )>, links?: Maybe<(
       { __typename?: 'LaunchLinks' }
-      & Pick<LaunchLinks, 'flickr_images'>
+      & Pick<LaunchLinks, 'article_link' | 'video_link' | 'flickr_images' | 'mission_patch_small'>
     )>, rocket?: Maybe<(
       { __typename?: 'LaunchRocket' }
       & Pick<LaunchRocket, 'rocket_name'>
@@ -1364,6 +1385,32 @@ export type AllLaunchesListQuery = (
   )>>> }
 );
 
+export const FutureLaunchListDocument = gql`
+    query futureLaunchList($offset: Int!, $limit: Int!) {
+  launchesUpcoming(offset: $offset, limit: $limit) {
+    id
+    launch_date_utc
+    mission_name
+    rocket {
+      rocket_name
+    }
+    launch_site {
+      site_name_long
+    }
+  }
+}
+    `;
+
+@Injectable({
+    providedIn: 'root'
+  })
+  export class FutureLaunchListGQL extends Apollo.Query<FutureLaunchListQuery, FutureLaunchListQueryVariables> {
+    document = FutureLaunchListDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const LaunchDetailsDocument = gql`
     query launchDetails($id: ID!) {
   launch(id: $id) {
@@ -1381,41 +1428,44 @@ export const LaunchDetailsDocument = gql`
 }
     `;
 
-  @Injectable({
+@Injectable({
     providedIn: 'root'
   })
   export class LaunchDetailsGQL extends Apollo.Query<LaunchDetailsQuery, LaunchDetailsQueryVariables> {
     document = LaunchDetailsDocument;
-    
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
   }
-export const AllLaunchesListDocument = gql`
-    query allLaunchesList($offset: Int!, $limit: Int!) {
-  launches(offset: $offset, limit: $limit) {
-    id
+export const PastLaunchListDocument = gql`
+    query pastLaunchList($offset: Int!, $limit: Int!) {
+  launchesPast(offset: $offset, limit: $limit) {
     mission_name
-    launch_date_utc
     launch_site {
       site_name_long
     }
     links {
+      article_link
+      video_link
       flickr_images
+      mission_patch_small
     }
     rocket {
       rocket_name
     }
+    id
+    launch_date_utc
   }
 }
     `;
 
-  @Injectable({
+@Injectable({
     providedIn: 'root'
   })
-  export class AllLaunchesListGQL extends Apollo.Query<AllLaunchesListQuery, AllLaunchesListQueryVariables> {
-    document = AllLaunchesListDocument;
-    
+  export class PastLaunchListGQL extends Apollo.Query<PastLaunchListQuery, PastLaunchListQueryVariables> {
+    document = PastLaunchListDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }

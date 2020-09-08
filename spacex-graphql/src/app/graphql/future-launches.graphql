@@ -1,0 +1,13 @@
+query futureLaunchList($offset: Int!, $limit: Int!) {
+  launchesUpcoming(offset: $offset, limit: $limit) {
+    id
+    launch_date_utc
+    mission_name
+    rocket {
+      rocket_name
+    }
+    launch_site {
+      site_name_long
+    }
+  }
+}

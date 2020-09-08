@@ -1,7 +1,7 @@
 module.exports = {
   client: {
     service : {
-      name: 'spacex-graphql-codegen',
+      name: 'SpaceX-GraphQL-Codegen',
       url: 'https://api.spacex.land/graphql/'
     }
   }
