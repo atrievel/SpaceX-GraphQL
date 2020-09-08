@@ -1,0 +1,13 @@
+<ng-container *ngIf="futureLaunches$ | async as futureLaunches">
+  <main>
+    <section class="container">
+      <mat-card *ngFor="let launch of futureLaunches">
+        <mat-card-header>
+          <mat-card-title>{{ launch.mission_name }}</mat-card-title>
+          <mat-card-subtitle>{{ launch.rocket.rocket_name }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ launch.launch_date_utc }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </section>
+  </main>
+</ng-container>
