@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PastLaunchListGQL } from '../services/SpacexGraphql.service';
-import { map } from 'rxjs/operators';
+import { map, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-past-launch-list',
@@ -10,12 +10,16 @@ import { map } from 'rxjs/operators';
 export class PastLaunchListComponent implements OnInit {
 
   logoPath = '../../assets/SpaceX-Logo.png';
+  loading = true;
 
   constructor(private readonly pastLaunchesService: PastLaunchListGQL) {}
 
   pastLaunches$ = this.pastLaunchesService
     .fetch({ offset: 0, limit: 30 })
-    .pipe(map((res) => res.data.launchesPast));
+    .pipe(
+      map((res) => res.data.launchesPast),
+      finalize(() => this.loading = false)
+    );
 
   ngOnInit(): void {
   }

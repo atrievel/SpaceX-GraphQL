@@ -5,9 +5,10 @@
         <mat-card-header>
           <mat-card-title>{{ launch.mission_name }}</mat-card-title>
           <mat-card-subtitle>{{ launch.rocket.rocket_name }}</mat-card-subtitle>
-          <mat-card-subtitle>{{ launch.launch_date_utc }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ launch.launch_date_utc | relativeTime }}</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
     </section>
   </main>
 </ng-container>
+<mat-progress-spinner class="spinner" color="warn" *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
