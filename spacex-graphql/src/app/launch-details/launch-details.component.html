@@ -7,9 +7,19 @@
       <mat-card-content>
         <p>{{ launchDetails.details }}</p>
       </mat-card-content>
-      <mat-card-footer>
-        <a href="{{ launchDetails.links.video_link }}">YouTube</a>
-        <a href="{{ launchDetails.links.article_link }}">ArticleLink</a>
+      <mat-card-footer class='button-container'>
+        <a *ngIf="launchDetails.links.video_link"
+          mat-icon-button color="primary" 
+          href="{{ launchDetails.links.video_link }}"
+          title="View the launch footage on YouTube">
+          <fa-icon [icon]="faYoutube" transform="grow-30"></fa-icon>
+        </a>
+        <a *ngIf="launchDetails.links.article_link"
+          mat-icon-button color="primary" 
+          href="{{ launchDetails.links.article_link }}"
+          title="View the related article covering the launch">
+          <fa-icon [icon]="faNewspaper" transform="grow-30"></fa-icon>
+        </a>
       </mat-card-footer>
     </mat-card>
   </section>

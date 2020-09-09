@@ -1,3 +1,9 @@
+mat-card {
+  width: 50%;
+  margin: auto;
+  margin-top: 2%;
+}
+
 .photo-grid {
   padding-top: 30px;
   display: grid;
@@ -6,8 +12,8 @@
   justify-content: center;
 }
 
-mat-card {
-  width: 50%;
-  margin: auto;
-  margin-top: 2%;
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
 }

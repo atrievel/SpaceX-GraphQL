@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, finalize } from 'rxjs/operators';
 import { LaunchDetailsGQL } from '../services/SpacexGraphql.service';
 
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faNewspaper } from '@fortawesome/free-regular-svg-icons';
+
 @Component({
   selector: 'app-launch-details',
   templateUrl: './launch-details.component.html',
@@ -11,6 +14,9 @@ import { LaunchDetailsGQL } from '../services/SpacexGraphql.service';
 })
 export class LaunchDetailsComponent implements OnInit {
   loading = true;
+
+  faYoutube = faYoutube;
+  faNewspaper = faNewspaper;
 
   constructor(
     private readonly route: ActivatedRoute,
