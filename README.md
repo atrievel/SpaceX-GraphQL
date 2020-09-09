@@ -23,13 +23,13 @@ Used to host the app on a cloud service
 ## Running the app
 There are a few ways that you can run this app. Here are the options (detailed instructions below):
 
-1. **COMING SOON** [View the built app on Firebase](https://spacex-graphql-viewer.web.app/)
+1. [View the built app on Firebase](https://spacex-graphql-viewer.web.app/)
 2. Run the app via Docker 🐋
 3. Clone the repo and run locally
 
 ### Firebase
 
-**COMING SOON**
+[View the built app on Firebase](https://spacex-graphql-viewer.web.app/)
 
 ### Docker
 
