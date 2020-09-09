@@ -13,7 +13,6 @@ import { faNewspaper } from '@fortawesome/free-regular-svg-icons';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LaunchDetailsComponent implements OnInit {
-  loading = true;
 
   faYoutube = faYoutube;
   faNewspaper = faNewspaper;
@@ -27,8 +26,7 @@ export class LaunchDetailsComponent implements OnInit {
     .pipe(
       map((params) => params.get('id') as string),
       switchMap((id) => this.launchDetailsService.fetch({ id })),
-      map((res) => res.data.launch),
-      finalize(() => this.loading = false)
+      map((res) => res.data.launch)
   );
 
   ngOnInit(): void {

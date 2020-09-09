@@ -9,13 +9,13 @@
       </mat-card-content>
       <mat-card-footer class='button-container'>
         <a *ngIf="launchDetails.links.video_link"
-          mat-icon-button color="primary" 
+          mat-icon-button color="accent"
           href="{{ launchDetails.links.video_link }}"
           title="View the launch footage on YouTube">
           <fa-icon [icon]="faYoutube" transform="grow-30"></fa-icon>
         </a>
         <a *ngIf="launchDetails.links.article_link"
-          mat-icon-button color="primary" 
+          mat-icon-button color="accent"
           href="{{ launchDetails.links.article_link }}"
           title="View the related article covering the launch">
           <fa-icon [icon]="faNewspaper" transform="grow-30"></fa-icon>
