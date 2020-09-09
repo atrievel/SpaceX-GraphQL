@@ -8,8 +8,9 @@ on:
 jobs:
   firebase-deploy:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./spacex-graphql/src
     steps:
-      - working-directory: ./spacex-graphql/src
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
