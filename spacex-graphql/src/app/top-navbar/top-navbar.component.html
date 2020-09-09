@@ -4,7 +4,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar>Views</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list (click)="drawer.toggle()">
       <a mat-list-item [routerLink]="'/'" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{ exact: true }">Project Details</a>
       <a mat-list-item [routerLink]="'/launches/past'" [routerLinkActive]="['is-active']" >Past Launches</a>
       <a mat-list-item [routerLink]="'/launches/future'" [routerLinkActive]="['is-active']">Future Launches</a>
