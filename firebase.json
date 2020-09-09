@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "spacex-graphql/dist/spacex-graphql",
     "ignore": [
       "firebase.json",
       "**/.*",
